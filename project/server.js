@@ -130,54 +130,35 @@ app.get("/register", (req, res) => {
 
 // Register user
 app.post("/register", async (req, res) => {
-
   try {
 
-    const hashedPassword = await bcrypt.hash(
-      req.body.password,
-      10
-    );
-
-
-    const id = Date.now().toString();
-
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     db.query(
-
-      "INSERT INTO users (id, username, email, password) VALUES (?,?,?,?)",
-
+      "INSERT INTO users (username, email, password) VALUES (?,?,?)",
       [
-        id,
         req.body.name,
         req.body.email,
         hashedPassword
       ],
-
-
-      (err) => {
+      (err, result) => {
 
         if (err) {
-
           console.log(err);
           return res.redirect("/register");
-
         }
 
+        console.log("User inserted successfully");
+        console.log("Inserted ID:", result.insertId);
 
         return res.redirect("/login");
-
       }
-
     );
 
-
   } catch (error) {
-
     console.log(error);
     return res.redirect("/register");
-
   }
-
 });
 
 
