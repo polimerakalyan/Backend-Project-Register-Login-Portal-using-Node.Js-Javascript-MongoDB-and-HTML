@@ -1,11 +1,20 @@
 {
-  "name": "project",
+  "name": "register-login-app",
   "version": "1.0.0",
-  "description": "First project",
-  "main": "index.js",
+  "description": "Node.js Register/Login Application",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "author": "Harsh Vishwakarma",
-  "license": "ISC"
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.23.2",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  }
 }
